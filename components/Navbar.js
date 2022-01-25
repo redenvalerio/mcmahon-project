@@ -1,4 +1,5 @@
 import {
+	Fade,
 	Divider,
 	Text,
 	Img,
@@ -28,6 +29,7 @@ import {
 import { motion } from "framer-motion"
 
 import NextLink from "next/link"
+import { getRouteMatcher } from "next/dist/shared/lib/router/utils";
 
 
 export default function Navbar() {
@@ -42,7 +44,7 @@ export default function Navbar() {
 				minH={'60px'}
 				py={{ base: 2 }}
 				px={{ base: 10 }}
-				direction={{base:"column", sm:"column", md:"column", lg:"row"}}
+				direction={["column", "row", "column", "row"]}
 				borderBottom={1}
 				borderStyle={'solid'}
 				borderColor={useColorModeValue('gray.200', 'gray.900')}
@@ -63,7 +65,7 @@ export default function Navbar() {
 
 
 
-					
+
 					<NextLink href="/" passHref>
 						<Link >Home</Link>
 					</NextLink>
@@ -106,69 +108,74 @@ export default function Navbar() {
 				</Flex>
 			</Stack>
 
-			<Collapse in={isOpen} animateOpacity>
-					<Stack onClick={onToggle} h="100vh" direction={"column"} align={"center"} w="100vw" spacing={20} display={{ base: "flex", sm: "flex", md: "none", lg: "none" }}>
-						<Stack spacing={2} p={10} justify={"flex-start"}  direction="column">
-
-							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
-								<NextLink href="/" passHref>
-									<Link fontSize={"md"} fontWeight="semibold">Home</Link>
-								</NextLink>
-							</MotionBox>
-
-							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
-								<NextLink href="/about" passHref>
-									<Link fontSize={"md"} fontWeight="semibold">About Us</Link>
-								</NextLink>
-							</MotionBox>
 
 
-							<Divider />
+			<Collapse in={isOpen} animateOpacity transition={{enter: {duration:0.5},  exit:{duration:0.5}} }>
 
-							<MotionBox whileHover={{ x: 10 }}>
-								<NextLink href="/serviceoffered" passHref>
-									<Link fontSize={"md"} fontWeight="semibold"  >Services Offered</Link>
-								</NextLink>
-							</MotionBox>
+				<Stack spacing={2} p={10} justify={"flex-start"} direction="column" display={["flex","flex", "none"]}>
 
-							<Divider />
+						<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
+							<NextLink href="/" passHref>
+								<Link fontSize={"md"} fontWeight="semibold">Home</Link>
+							</NextLink>
+						</MotionBox>
 
-							<MotionBox whileHover={{ x: 10 }}>
-								<NextLink href="/contact" passHref>
-									<Link fontSize={"md"} fontWeight="semibold"  >Contact Us</Link>
-								</NextLink>
-							</MotionBox>
 
-							<Divider />
+						<Divider />
 
-							<MotionBox whileHover={{ x: 10 }}>
-								<NextLink href="/employment" passHref>
-									<Link fontSize={"md"} fontWeight="semibold"  >Employment</Link>
-								</NextLink>
-							</MotionBox>
+						<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
+							<NextLink href="/about" passHref>
+								<Link fontSize={"md"} fontWeight="semibold">About Us</Link>
+							</NextLink>
+						</MotionBox>
 
-						</Stack>
-					<Box minH="20px" justify={"center"}>
-						<ArrowIcon
-							as={ChevronDownIcon}
-							w={20}
-							h={20}
-							whileHover={{ scale: 1.2 }}
-						/>
-					</Box>
+
+						<Divider />
+
+						<MotionBox whileHover={{ x: 10 }}>
+							<NextLink href="/serviceoffered" passHref>
+								<Link fontSize={"md"} fontWeight="semibold"  >Services Offered</Link>
+							</NextLink>
+						</MotionBox>
+
+						<Divider />
+
+						<MotionBox whileHover={{ x: 10 }}>
+							<NextLink href="/contact" passHref>
+								<Link fontSize={"md"} fontWeight="semibold"  >Contact Us</Link>
+							</NextLink>
+						</MotionBox>
+
+						<Divider />
+
+						<MotionBox whileHover={{ x: 10 }}>
+							<NextLink href="/employment" passHref>
+								<Link fontSize={"md"} fontWeight="semibold"  >Employment</Link>
+							</NextLink>
+						</MotionBox>
 
 					</Stack>
 
-			</Collapse>
-		</Box>
-	)
-}
 
-const DropdownLink = ({ href, text }) => {
-	return (
-		<NextLink href={href} passHref>
-			<Link fontSize={"lg"} fontWeight="semibold">{text}</Link>
-		</NextLink>
+				<Fade in={isOpen} transition={{enter:{duration:0.2}, exit:{duration:0.5}}}>
+					<Flex mt={40} align={"center"} direction="column" onClick={onToggle} display={{ base: "flex", sm: "flex", md: "none", lg: "none" }}>
+						<Box  justify={"center"}>
+							<ArrowIcon
+								as={ChevronDownIcon}
+								w={20}
+								h={20}
+								initial={isOpen? {rotate:180} : {rotate:0}}
+								animate={isOpen? {rotate:0} : {rotate:180}}
+								transition={{ duration: 0.2 }}
+							/>
+						</Box>
+					</Flex>
+				</Fade>
+
+
+			</Collapse>
+
+		</Box>
 	)
 }
 

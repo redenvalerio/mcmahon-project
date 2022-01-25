@@ -110,11 +110,12 @@ export default function Navbar() {
 
 
 
-			<Collapse in={isOpen} animateOpacity transition={{enter: {duration:0.5},  exit:{duration:0.5}} }>
+			<Flex onClick={onToggle} direction="column" align="center" w="100%">
+				<Collapse in={isOpen} animateOpacity transition={{ enter: { duration: 0.5 }, exit: { duration: 0.5 } }}>
 
-				<Stack spacing={2} p={10} justify={"flex-start"} direction="column" display={["flex","flex", "none"]}>
+					<Stack spacing={2} p={10} justify={"flex-start"} direction="column" display={["flex", "flex", "none"]} >
 
-						<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
+						<MotionBox  whileHover={{ x: 10 }} >
 							<NextLink href="/" passHref>
 								<Link fontSize={"md"} fontWeight="semibold">Home</Link>
 							</NextLink>
@@ -123,7 +124,7 @@ export default function Navbar() {
 
 						<Divider />
 
-						<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
+						<MotionBox whileHover={{ x: 10 }}>
 							<NextLink href="/about" passHref>
 								<Link fontSize={"md"} fontWeight="semibold">About Us</Link>
 							</NextLink>
@@ -157,24 +158,27 @@ export default function Navbar() {
 					</Stack>
 
 
-				<Fade in={isOpen} transition={{enter:{duration:0.2}, exit:{duration:0.5}}}>
-					<Flex mt={40} align={"center"} direction="column" onClick={onToggle} display={{ base: "flex", sm: "flex", md: "none", lg: "none" }}>
-						<Box  justify={"center"}>
-							<ArrowIcon
-								as={ChevronDownIcon}
-								w={20}
-								h={20}
-								initial={isOpen? {rotate:180} : {rotate:0}}
-								animate={isOpen? {rotate:0} : {rotate:180}}
-								transition={{ duration: 0.2 }}
-							/>
-						</Box>
-					</Flex>
-				</Fade>
+					<Fade in={isOpen} transition={{ enter: { duration: 0.2 }, exit: { duration: 0.5 } }}>
+						<Flex mt={40} align={"center"} direction="column" onClick={onToggle} display={{ base: "flex", sm: "flex", md: "none", lg: "none" }}>
+							<Box justify={"center"}>
+								<ArrowIcon
+									as={ChevronDownIcon}
+									w={20}
+									h={20}
+									initial={isOpen ? { rotate: 180 } : { rotate: 0 }}
+									animate={isOpen ? { rotate: 0 } : { rotate: 180 }}
+									transition={{ duration: 0.2 }}
+								/>
+							</Box>
+						</Flex>
+					</Fade>
 
 
-			</Collapse>
+				</Collapse>
 
+
+
+			</Flex>
 		</Box>
 	)
 }

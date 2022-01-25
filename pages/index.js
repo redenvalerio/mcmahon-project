@@ -10,6 +10,7 @@ export default function Index() {
       </Heading>
       <Text>
         Test Index Page
+        Test Test
       </Text>
     </Flex>
   )

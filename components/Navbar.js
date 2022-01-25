@@ -6,6 +6,7 @@ import { Logo } from "./Logo"
 
 export default function Navbar() {
 	const [display, changeDisplay] = useState('none')
+	const { colorMode, toggleColorMode } = useColorMode()
 
 	return (
 		<Flex align="center" mt="2%">

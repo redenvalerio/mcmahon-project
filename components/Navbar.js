@@ -14,6 +14,7 @@ import {
 	IconButton,
 	useDisclosure,
 	useState,
+	Spacer,
 
 } from "@chakra-ui/react"
 
@@ -35,51 +36,56 @@ export default function Navbar() {
 	const MotionBox = motion(Box)
 	return (
 		<Box>
-			<Flex
+			<Stack
 				bg={useColorModeValue('white', 'gray.800')}
 				color={useColorModeValue('gray.600', 'white')}
 				minH={'60px'}
 				py={{ base: 2 }}
 				px={{ base: 10 }}
+				direction={{base:"column", sm:"column", md:"column", lg:"row"}}
 				borderBottom={1}
 				borderStyle={'solid'}
 				borderColor={useColorModeValue('gray.200', 'gray.900')}
 				align={'center'}>
-				<Flex flex={{ base: 1 }} justify='start'>
-					<Img p={1} maxH={"150px"} minW={"150px"}
+
+				<Flex minW="100px" maxW="200px" flex={{ base: 1 }} justify='start'>
+					<Img p={1}
 						src={useColorModeValue('mcmahon-logo.png', 'mcmahon-logo-dark.png')} />
 				</Flex>
 
 				<Stack
 					justify="flex-end"
 					flex={{ base: 1, md: 'auto' }}
-					ml={{ base: -2 }}
 					display={{ base: 'none', sm: 'none', md: 'flex', lg: 'flex' }}
 					direction="row"
+					align="center"
 					spacing={6}>
 
+
+
+					
 					<NextLink href="/" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Home</Link>
+						<Link >Home</Link>
 					</NextLink>
 
 					<NextLink href="/about" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >About Us</Link>
+						<Link  >About Us</Link>
 					</NextLink>
 
 					<NextLink href="/servicearea" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Service Area</Link>
+						<Link   >Service Area</Link>
 					</NextLink>
 
 					<NextLink href="/serviceoffered" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Services Offered</Link>
+						<Link   >Services Offered</Link>
 					</NextLink>
 
 					<NextLink href="/contact" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Contact Us</Link>
+						<Link  >Contact Us</Link>
 					</NextLink>
 
 					<NextLink href="/employment" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Employment</Link>
+						<Link  >Employment</Link>
 					</NextLink>
 
 				</Stack>
@@ -98,22 +104,21 @@ export default function Navbar() {
 						aria-label={'Toggle Navigation'}
 					/>
 				</Flex>
-			</Flex>
+			</Stack>
 
 			<Collapse in={isOpen} animateOpacity>
-				<Flex onClick={onToggle} align="center" direction="column" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} >
-					<Stack justify={"flex-start"} direction={"column"} align={"center"} w="100vw" spacing={20}>
-						<Stack spacing={2} p={10} h="70vh" justify={"flex-start"} w="100vw" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} direction="column">
+					<Stack onClick={onToggle} h="100vh" direction={"column"} align={"center"} w="100vw" spacing={20} display={{ base: "flex", sm: "flex", md: "none", lg: "none" }}>
+						<Stack spacing={2} p={10} justify={"flex-start"}  direction="column">
 
 							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
 								<NextLink href="/" passHref>
-									<Link fontSize={"lg"} fontWeight="semibold">Home</Link>
+									<Link fontSize={"md"} fontWeight="semibold">Home</Link>
 								</NextLink>
 							</MotionBox>
 
 							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
 								<NextLink href="/about" passHref>
-									<Link fontSize={"lg"} fontWeight="semibold">About Us</Link>
+									<Link fontSize={"md"} fontWeight="semibold">About Us</Link>
 								</NextLink>
 							</MotionBox>
 
@@ -122,7 +127,7 @@ export default function Navbar() {
 
 							<MotionBox whileHover={{ x: 10 }}>
 								<NextLink href="/serviceoffered" passHref>
-									<Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
+									<Link fontSize={"md"} fontWeight="semibold"  >Services Offered</Link>
 								</NextLink>
 							</MotionBox>
 
@@ -130,7 +135,7 @@ export default function Navbar() {
 
 							<MotionBox whileHover={{ x: 10 }}>
 								<NextLink href="/contact" passHref>
-									<Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
+									<Link fontSize={"md"} fontWeight="semibold"  >Contact Us</Link>
 								</NextLink>
 							</MotionBox>
 
@@ -138,24 +143,22 @@ export default function Navbar() {
 
 							<MotionBox whileHover={{ x: 10 }}>
 								<NextLink href="/employment" passHref>
-									<Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
+									<Link fontSize={"md"} fontWeight="semibold"  >Employment</Link>
 								</NextLink>
 							</MotionBox>
 
 						</Stack>
-						<Box minH="20px" justify={"center"}>
-							<ArrowIcon
-								as={ChevronDownIcon}
-								w={20}
-								h={20}
-								whileHover={{ scale: 1.2 }}
-							/>
-						</Box>
-
+					<Box minH="20px" justify={"center"}>
+						<ArrowIcon
+							as={ChevronDownIcon}
+							w={20}
+							h={20}
+							whileHover={{ scale: 1.2 }}
+						/>
+					</Box>
 
 					</Stack>
 
-				</Flex>
 			</Collapse>
 		</Box>
 	)

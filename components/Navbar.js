@@ -1,51 +1,143 @@
-import { useColorMode, HStack, Box, Text, Flex, Link, Spacer, Button, Img} from "@chakra-ui/react"
-import Image from "next/image"
+import { useColorMode, HStack, VStack, Box, Text, Flex, Link, Spacer, Button, Img, IconButton } from "@chakra-ui/react"
+import { useState } from "react"
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
 import DarkModeSwitch from "../components/DarkModeSwitch"
+import { Logo } from "./Logo"
 
 export default function Navbar() {
 	const { colorMode } = useColorMode()
 	const LightModeLogo = "mcmahon-logo.png"
 	const DarkModeLogo = "mcmahon-logo-dark.png"
+	const [display, changeDisplay] = useState('none')
 	return (
-		<Flex p="5">
-			<Img ml="10" w="20%" src={colorMode === 'dark' ? DarkModeLogo : LightModeLogo} />
-			<Spacer/>
-			<Flex mb="10">
+		<Flex align="center" mt="2%">
+			<Box ml="5%" width={["200px", "200px", "300px", "300px"]}>
+				<Logo />
+			</Box>
+
+			<Spacer />
+
+			<Flex
+				mr="5%"
+				display={['none', 'none', 'flex', 'flex']}
+			>
+
 				{/* Navbar links */}
-				<HStack>
+				<Flex>
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								About Us
+							</Link>
+						</NextLink>
+					</Box>
+
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Service Area
+							</Link>
+						</NextLink>
+					</Box>
+
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Servies Offered
+							</Link>
+						</NextLink>
+					</Box>
+
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Contact Us
+							</Link>
+						</NextLink>
+					</Box>
+
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Employment
+							</Link>
+						</NextLink>
+					</Box>
+
+				</Flex>
+
+			</Flex>
+
+			<IconButton
+				aria-label="Open Menu"
+				mt="5%"
+				mr="5%"
+				size="md"
+				icon={<HamburgerIcon />}
+				display={['flex', 'flex', 'none', 'none']}
+				onClick={() => changeDisplay('flex')}
+			/>
+
+			<Flex
+				w="100vw"
+				h="100vh"
+				zIndex={20}
+				bgColor="gray.700"
+				pos="fixed"
+				top="0"
+				left="0"
+				overflow="auto"
+				flexDir="column"
+				display={display}
+			>
+
+				<Flex justify="flex-end" mb="10%">
+					<IconButton
+						aria-label="Close Menu"
+						mt="5%"
+						mr="5%"
+						size="md"
+						icon={<CloseIcon />}
+						onClick={() => changeDisplay('none')}
+					/>
+
+				</Flex>
+
+				{/* Navbar links */}
+				<VStack>
 					<NextLink href="/">
-						<Button>
+						<Link fontSize="xl" fontWeight="semibold">
 							About Us
-						</Button>
+						</Link>
 					</NextLink>
 
 					<NextLink href="/">
-						<Button>
+						<Link fontSize="xl" fontWeight="semibold">
 							Service Area
-						</Button>
+						</Link>
 					</NextLink>
 
 					<NextLink href="/">
-						<Button>
+						<Link fontSize="xl" fontWeight="semibold">
 							Services Offered
-						</Button>
+						</Link>
 					</NextLink>
 
 					<NextLink href="/">
-						<Button>
+						<Link fontSize="xl" fontWeight="semibold">
 							Contact Us
-						</Button>
+						</Link>
 					</NextLink>
 
 					<NextLink href="/">
-						<Button>
+						<Link fontSize="xl" fontWeight="semibold">
 							Employment
-						</Button>
+						</Link>
 					</NextLink>
 
-				<DarkModeSwitch/>
-				</HStack>
+				</VStack>
+
 			</Flex>
 
 		</Flex>

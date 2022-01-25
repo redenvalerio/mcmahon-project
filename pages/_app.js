@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider resetCSS>
       <Navbar/>
       <Component {...pageProps} />
       <Footer/>

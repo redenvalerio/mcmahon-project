@@ -1,4 +1,5 @@
 import {
+	Divider,
 	Text,
 	Img,
 	Flex,
@@ -12,6 +13,7 @@ import {
 	useBreakpointValue,
 	IconButton,
 	useDisclosure,
+	useState,
 
 } from "@chakra-ui/react"
 
@@ -22,11 +24,15 @@ import {
 	ChevronRightIcon,
 } from '@chakra-ui/icons';
 
+import {motion} from "framer-motion"
+
 import NextLink from "next/link"
 
 
 export default function Navbar() {
 	const { isOpen, onToggle } = useDisclosure();
+	const ArrowIcon = motion(Icon)
+	const MotionBox = motion(Box)
 	return (
 		<Box>
 			<Flex
@@ -51,7 +57,7 @@ export default function Navbar() {
 					display={{ base: 'none', sm: 'none', md: 'flex', lg: 'flex' }}
 					direction="row" 
 					spacing={6}>
-
+					
 					<NextLink href="/about" passHref>
 						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >About Us</Link>
 					</NextLink>
@@ -90,8 +96,88 @@ export default function Navbar() {
 				</Flex>
 			</Flex>
 
-			<Collapse in={isOpen} animateOpacity>
+			<Collapse in={isOpen} animateOpacity transitionDuration="200ms">
+				<Flex onClick={onToggle} align="center" direction="column" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} w="100vw" >
+
+					<Stack scrollBehavior={"inside"} p={20} h="60vh" w="100%" justify={"flex-start"}  display={{ base: "none", sm: "flex", md: "none", lg: "none" }} direction="column">
+
+
+						<MotionBox whileDrag={{x:10}} whileHover={{x:10}}>
+							<NextLink href="/about" passHref>
+								<Link fontSize={"lg"} fontWeight="semibold">About Us</Link>
+							</NextLink>
+						</MotionBox>
+
+
+						<Divider />
+
+						<MotionBox whileHover={{ x: 10 }}>
+							<NextLink href="/serviceoffered" passHref>
+								<Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
+							</NextLink>
+						</MotionBox>
+
+						<Divider />
+
+						<MotionBox whileHover={{ x: 10 }}>
+							<NextLink href="/contact" passHref>
+								<Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
+							</NextLink>
+						</MotionBox>
+
+						<Divider />
+
+						<MotionBox whileHover={{ x: 10 }}>
+							<NextLink href="/employment" passHref>
+								<Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
+							</NextLink>
+						</MotionBox>
+
+
+
+					</Stack>
+					<Flex justify={"center"}>
+						<ArrowIcon
+							as={ChevronDownIcon}
+							w={20}
+							h={20}
+							whileHover= {{scale:1.2}}
+						/>
+					</Flex>
+
+				</Flex>
 			</Collapse>
 		</Box>
 	)
 }
+
+const DropdownLink = ({href, text}) => {
+	return (
+		<NextLink href={href} passHref>
+			<Link fontSize={"lg"} fontWeight="semibold">{text}</Link>
+		</NextLink>
+	)
+}
+
+const MobileNav = () => {
+	const { isOpen, onToggle } = useDisclosure()
+  return (
+    <Stack p={10} h="100vh" align={"center"} display={!isOpen ? {base:"none", sm:"flex", md:"none", lg:"none"} : "none"}>
+		  <NextLink href="/about" passHref>
+			  <Link fontSize={"lg"} fontWeight="semibold" onClick={ () => onToggle()} >About Us</Link>
+		  </NextLink>
+
+		  <NextLink href="/serviceoffered" passHref>
+			  <Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
+		  </NextLink>
+
+		  <NextLink href="/contact" passHref>
+			  <Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
+		  </NextLink>
+
+		  <NextLink href="/employment" passHref>
+			  <Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
+		  </NextLink>
+    </Stack>
+  );
+};

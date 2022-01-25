@@ -2,13 +2,9 @@ import { useColorMode, HStack, VStack, Box, Text, Flex, Link, Spacer, Button, Im
 import { useState } from "react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
-import DarkModeSwitch from "../components/DarkModeSwitch"
 import { Logo } from "./Logo"
 
 export default function Navbar() {
-	const { colorMode } = useColorMode()
-	const LightModeLogo = "mcmahon-logo.png"
-	const DarkModeLogo = "mcmahon-logo-dark.png"
 	const [display, changeDisplay] = useState('none')
 	return (
 		<Flex align="center" mt="2%">

@@ -1,78 +1,26 @@
 import { useColorMode, Box, Flex, Link, Spacer, IconButton,} from "@chakra-ui/react"
 import { useState } from "react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
-import NextLink from "next/link"
 import { Logo } from "./Logo"
+import { NavbarLinks } from "./NavbarLinks"
 
 export default function Navbar() {
 	const [display, changeDisplay] = useState('none')
 	const { colorMode, toggleColorMode } = useColorMode()
 
 	return (
-		<Flex align="center" mt="2%">
+		<Flex as="navbar" pb="5" align="center">
 			<Box ml="5%" width={["200px", "200px", "300px", "300px"]}>
 				<Logo />
 			</Box>
-
 			<Spacer />
-
-			<Flex
-				mr="5%"
-				mb="20px"
+			<NavbarLinks mr="5%" flexDir="row" align="center"
 				display={['none', 'none', 'flex', 'flex']}
-			>
-
-				{/* Navbar links */}
-				<Flex>
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								About Us
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Service Area
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Servies Offered
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Contact Us
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Employment
-							</Link>
-						</NextLink>
-					</Box>
-
-				</Flex>
-
-			</Flex>
-
+			/>
 			<IconButton
 				aria-label="Open Menu"
-				mt="5%"
 				mr="5%"
-				size="md"
+				size="lg"
 				icon={<HamburgerIcon />}
 				display={['flex', 'flex', 'none', 'none']}
 				onClick={() => { changeDisplay('flex')}}
@@ -90,61 +38,18 @@ export default function Navbar() {
 				flexDir="column"
 				display={display}
 			>
-
 				<Flex justify="flex-end" mb="10%">
 					<IconButton
 						aria-label="Close Menu"
 						mt="5%"
 						mr="5%"
-						size="md"
+						size="lg"
 						icon={<CloseIcon />}
 						onClick={() => changeDisplay('none')}
 					/>
 
 				</Flex>
-
-				<Flex flexDir="column" align="center">
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								About Us
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Service Area
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Servies Offered
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Contact Us
-							</Link>
-						</NextLink>
-					</Box>
-
-					<Box p="3">
-						<NextLink href="/">
-							<Link fontSize="xl">
-								Employment
-							</Link>
-						</NextLink>
-					</Box>
-
-				</Flex>
+				<NavbarLinks flexDir="column" align="center"/>
 			</Flex>
 		</Flex>
 	)

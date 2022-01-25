@@ -1,4 +1,4 @@
-import { HStack, Box, Text, Flex, Link, Spacer, Button } from "@chakra-ui/react"
+import { HStack, Box, Text, Flex, Link, Spacer, Button, Image } from "@chakra-ui/react"
 import NextLink from "next/link"
 import DarkModeSwitch from "../components/DarkModeSwitch"
 import Logo from "../public/mcmahon-logo.png"
@@ -6,9 +6,10 @@ import Logo from "../public/mcmahon-logo.png"
 export default function Navbar() {
 	return (
 		<Flex p="5">
-			<Box>LOGO</Box>
+			<Image src={Logo} boxSize="150px"/>
 			<Spacer/>
 			<Flex>
+				{/* Navbar links */}
 				<HStack>
 					<NextLink href="/">
 						<Button>

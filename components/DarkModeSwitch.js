@@ -8,6 +8,7 @@ const DarkModeSwitch = () => {
 			aria-label="Toggle Dark Switch"
 			bg={colorMode === 'dark' ? "gray.800" : "white"}
 			icon={colorMode === 'dark' ? <MoonIcon/> : <SunIcon/>}
+			size="lg"
 			onClick={toggleColorMode}
 		/>	
 	)

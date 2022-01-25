@@ -1,65 +1,97 @@
-import { useColorMode, Box, Flex, Link, Spacer, IconButton, } from "@chakra-ui/react"
-import { useState } from "react"
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
-import { Logo } from "./Logo"
-import { NavbarLinks } from "./NavbarLinks"
+import {
+	Text,
+	Img,
+	Flex,
+	Collapse,
+	Box,
+	Link,
+	Icon,
+	Stack,
+	Button,
+	useColorModeValue,
+	useBreakpointValue,
+	IconButton,
+	useDisclosure,
+
+} from "@chakra-ui/react"
+
+import {
+	HamburgerIcon,
+	CloseIcon,
+	ChevronDownIcon,
+	ChevronRightIcon,
+} from '@chakra-ui/icons';
+
+import NextLink from "next/link"
+
 
 export default function Navbar() {
-	const [display, changeDisplay] = useState('none')
-	const { colorMode, toggleColorMode } = useColorMode()
-
+	const { isOpen, onToggle } = useDisclosure();
 	return (
-		<Flex>
-
-			<Flex as="navbar" pb="5" align="center" width="full">
-
-				<Box ml="50px" width={["200px", "200px", "300px", "300px"]}>
-					<Logo />
-				</Box>
-				
-				<Spacer />
-
-				<NavbarLinks mr="5%" flexDir="row" align="center"
-					display={['none', 'none', 'flex', 'flex']}
-				/>
-				<IconButton
-					aria-label="Open Menu"
-					mt="10px"
-					mr="20px"
-					size="lg"
-					icon={<HamburgerIcon />}
-					display={['flex', 'flex', 'none', 'none']}
-					onClick={() => { changeDisplay('flex') }}
-				/>
-			</Flex>
-
+		<Box>
 			<Flex
-				w="100vw"
-				h="200vh"
-				p="5"
-				zIndex={20}
-				bgColor={colorMode === 'dark' ? "gray.800" : "white"}
-				pos="fixed"
-				flexDir="column"
-				display={display} 
-			>
-				<Flex justify="flex-end">
-
-					<IconButton
-						aria-label="Close Menu"
-						mt="7px"
-						mr="18px"
-						size="lg"
-						icon={<CloseIcon />}
-						onClick={() => changeDisplay('none')}
-					/>
-
+				bg={useColorModeValue('white', 'gray.800')}
+				color={useColorModeValue('gray.600', 'white')}
+				minH={'60px'}
+				py={{ base: 2 }}
+				px={{ base: 10 }}
+				borderBottom={1}
+				borderStyle={'solid'}
+				borderColor={useColorModeValue('gray.200', 'gray.900')}
+				align={'center'}>
+				<Flex flex={{ base: 1 }} justify='start'>
+					<Img p={1} maxH={"150px"} minW={"150px"}
+						src={useColorModeValue('mcmahon-logo.png', 'mcmahon-logo-dark.png')} />
 				</Flex>
 
-				<NavbarLinks flexDir="column" align="center" />
+				<Stack
+					justify="flex-end"
+					flex={{ base: 1, md: 'auto' }}
+					ml={{ base: -2 }}
+					display={{ base: 'none', sm: 'none', md: 'flex', lg: 'flex' }}
+					direction="row" 
+					spacing={6}>
 
+					<NextLink href="/about" passHref>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >About Us</Link>
+					</NextLink>
+
+					<NextLink href="/servicearea" passHref>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Service Area</Link>
+					</NextLink>
+
+					<NextLink href="/serviceoffered" passHref>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Services Offered</Link>
+					</NextLink>
+
+					<NextLink href="/contact" passHref>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Contact Us</Link>
+					</NextLink>
+
+					<NextLink href="/employment" passHref>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Employment</Link>
+					</NextLink>
+
+				</Stack>
+
+				<Flex
+					justify="flex-end"
+					flex={{ base: 1, md: 'auto' }}
+					ml={{ base: -2 }}
+					display={{ base: 'flex', md: 'none' }}>
+					<IconButton
+						onClick={onToggle}
+						icon={
+							isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+						}
+						variant={'ghost'}
+						aria-label={'Toggle Navigation'}
+					/>
+				</Flex>
 			</Flex>
 
-		</Flex>
+			<Collapse in={isOpen} animateOpacity>
+			</Collapse>
+		</Box>
 	)
 }

@@ -7,6 +7,8 @@ export const FloatingSwitch = () =>
 		<Box position="fixed"
 			bottom="1%"
 			right="1%"
+			mr="1%"
+			mb="1%"
             zIndex={10}
 		>
 			<DarkModeSwitch/>

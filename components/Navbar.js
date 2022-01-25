@@ -1,40 +1,29 @@
 import {
-	Fade,
 	Divider,
-	Text,
 	Img,
 	Flex,
 	Collapse,
+	IconButton,
 	Box,
 	Link,
-	Icon,
 	Stack,
-	Button,
 	useColorModeValue,
-	useBreakpointValue,
-	IconButton,
 	useDisclosure,
-	useState,
-	Spacer,
 
 } from "@chakra-ui/react"
 
 import {
 	HamburgerIcon,
 	CloseIcon,
-	ChevronDownIcon,
-	ChevronRightIcon,
 } from '@chakra-ui/icons';
 
 import { motion } from "framer-motion"
 
 import NextLink from "next/link"
-import { getRouteMatcher } from "next/dist/shared/lib/router/utils";
 
 
 export default function Navbar() {
 	const { isOpen, onToggle } = useDisclosure();
-	const ArrowIcon = motion(Icon)
 	const MotionBox = motion(Box)
 	return (
 		<Box>

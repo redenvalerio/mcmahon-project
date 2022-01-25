@@ -1,4 +1,4 @@
-import { useColorMode, HStack, VStack, Box, Text, Flex, Link, Spacer, Button, Img, IconButton } from "@chakra-ui/react"
+import { Fade, useColorMode, HStack, VStack, Box, Text, Flex, Link, Spacer, Button, Img, IconButton, useDisclosure } from "@chakra-ui/react"
 import { useState } from "react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
@@ -10,6 +10,7 @@ export default function Navbar() {
 	const LightModeLogo = "mcmahon-logo.png"
 	const DarkModeLogo = "mcmahon-logo-dark.png"
 	const [display, changeDisplay] = useState('none')
+	
 	return (
 		<Flex align="center" mt="2%">
 			<Box ml="5%" width={["200px", "200px", "300px", "300px"]}>
@@ -77,14 +78,14 @@ export default function Navbar() {
 				size="md"
 				icon={<HamburgerIcon />}
 				display={['flex', 'flex', 'none', 'none']}
-				onClick={() => changeDisplay('flex')}
+				onClick={() => { changeDisplay('flex')}}
 			/>
 
 			<Flex
 				w="100vw"
 				h="100vh"
 				zIndex={20}
-				bgColor="gray.700"
+				bgColor={colorMode === 'dark' ? "gray.800" : "white"}
 				pos="fixed"
 				top="0"
 				left="0"
@@ -146,11 +147,8 @@ export default function Navbar() {
 						</NextLink>
 					</Box>
 
-
+				</Flex>
 			</Flex>
-
-			</Flex>
-
 		</Flex>
 	)
 }

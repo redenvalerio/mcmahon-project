@@ -1,4 +1,5 @@
 import { Heading, Text, Flex } from "@chakra-ui/react"
+import Footer from "../components/Footer"
 
 export default function Index() {
   return (

@@ -41,8 +41,8 @@ export default function Navbar() {
 				<Flex justify="flex-end" mb="10%">
 					<IconButton
 						aria-label="Close Menu"
-						mt="5%"
-						mr="5%"
+						mt="4%"
+						mr="8%"
 						size="lg"
 						icon={<CloseIcon />}
 						onClick={() => changeDisplay('none')}

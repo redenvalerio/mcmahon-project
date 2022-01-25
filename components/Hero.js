@@ -29,7 +29,6 @@ import {
           py={{ base: 20, md: 28 }}
           direction={{ base: 'column', md: 'row' }}>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
             <Heading
               lineHeight={1.1}
               fontWeight={600}

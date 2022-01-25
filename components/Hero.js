@@ -93,7 +93,8 @@ import {
                 
                 <Box
                     position={'relative'}
-                    height={'300px'}
+                    maxH={"400px"}
+                    minW={"200px"}
                     rounded={'2xl'}
                     boxShadow={'2xl'}
                     width={'full'}

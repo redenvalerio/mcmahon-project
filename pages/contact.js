@@ -127,7 +127,6 @@ export default function Contact() {
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
-                            children={<BsPerson color="gray.800" />}
                           />
                           <Input type="text" size="md" />
                         </InputGroup>
@@ -137,7 +136,6 @@ export default function Contact() {
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
-                            children={<MdOutlineEmail color="gray.800" />}
                           />
                           <Input type="text" size="md" />
                         </InputGroup>

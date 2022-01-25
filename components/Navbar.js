@@ -20,6 +20,7 @@ export default function Navbar() {
 
 			<Flex
 				mr="5%"
+				mb="20px"
 				display={['none', 'none', 'flex', 'flex']}
 			>
 
@@ -104,39 +105,49 @@ export default function Navbar() {
 
 				</Flex>
 
-				{/* Navbar links */}
-				<VStack>
-					<NextLink href="/">
-						<Link fontSize="xl" fontWeight="semibold">
-							About Us
-						</Link>
-					</NextLink>
+				<Flex flexDir="column" align="center">
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								About Us
+							</Link>
+						</NextLink>
+					</Box>
 
-					<NextLink href="/">
-						<Link fontSize="xl" fontWeight="semibold">
-							Service Area
-						</Link>
-					</NextLink>
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Service Area
+							</Link>
+						</NextLink>
+					</Box>
 
-					<NextLink href="/">
-						<Link fontSize="xl" fontWeight="semibold">
-							Services Offered
-						</Link>
-					</NextLink>
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Servies Offered
+							</Link>
+						</NextLink>
+					</Box>
 
-					<NextLink href="/">
-						<Link fontSize="xl" fontWeight="semibold">
-							Contact Us
-						</Link>
-					</NextLink>
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Contact Us
+							</Link>
+						</NextLink>
+					</Box>
 
-					<NextLink href="/">
-						<Link fontSize="xl" fontWeight="semibold">
-							Employment
-						</Link>
-					</NextLink>
+					<Box p="3">
+						<NextLink href="/">
+							<Link fontSize="xl">
+								Employment
+							</Link>
+						</NextLink>
+					</Box>
 
-				</VStack>
+
+			</Flex>
 
 			</Flex>
 

@@ -58,24 +58,28 @@ export default function Navbar() {
 					direction="row"
 					spacing={6}>
 
+					<NextLink href="/" passHref>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Home</Link>
+					</NextLink>
+
 					<NextLink href="/about" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >About Us</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >About Us</Link>
 					</NextLink>
 
 					<NextLink href="/servicearea" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Service Area</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Service Area</Link>
 					</NextLink>
 
 					<NextLink href="/serviceoffered" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Services Offered</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Services Offered</Link>
 					</NextLink>
 
 					<NextLink href="/contact" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Contact Us</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Contact Us</Link>
 					</NextLink>
 
 					<NextLink href="/employment" passHref>
-						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Employment</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '13px', lg: '20px' }} >Employment</Link>
 					</NextLink>
 
 				</Stack>
@@ -96,11 +100,17 @@ export default function Navbar() {
 				</Flex>
 			</Flex>
 
-			<Collapse in={isOpen} animateOpacity transitionDuration="200ms">
+			<Collapse in={isOpen} animateOpacity>
 				<Flex onClick={onToggle} align="center" direction="column" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} >
+					<Stack justify={"flex-start"} direction={"column"} align={"center"} w="100vw" spacing={20}>
+						<Stack spacing={2} p={10} h="70vh" justify={"flex-start"} w="100vw" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} direction="column">
 
-					<Stack justify={"flex-start"} direction={"column"} align={"center"} w="100%" spacing={20}>
-						<Stack spacing={2} p={20} h="50vh" justify={"flex-start"} w="100%" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} direction="column">
+							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
+								<NextLink href="/" passHref>
+									<Link fontSize={"lg"} fontWeight="semibold">Home</Link>
+								</NextLink>
+							</MotionBox>
+
 							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
 								<NextLink href="/about" passHref>
 									<Link fontSize={"lg"} fontWeight="semibold">About Us</Link>
@@ -131,8 +141,6 @@ export default function Navbar() {
 									<Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
 								</NextLink>
 							</MotionBox>
-
-
 
 						</Stack>
 						<Box minH="20px" justify={"center"}>

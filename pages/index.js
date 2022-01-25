@@ -1,5 +1,6 @@
 import { Heading, Text, Flex } from "@chakra-ui/react"
 import DarkModeSwitch from "../components/DarkModeSwitch"
+import Footer from "../components/Footer"
 
 export default function Index() {
   return (
@@ -11,6 +12,7 @@ export default function Index() {
       <Text>
         Test Index Page
       </Text>
+      <Footer/>
     </Flex>
   )
 }

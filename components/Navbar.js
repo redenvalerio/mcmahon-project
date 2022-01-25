@@ -24,7 +24,7 @@ import {
 	ChevronRightIcon,
 } from '@chakra-ui/icons';
 
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 import NextLink from "next/link"
 
@@ -55,27 +55,27 @@ export default function Navbar() {
 					flex={{ base: 1, md: 'auto' }}
 					ml={{ base: -2 }}
 					display={{ base: 'none', sm: 'none', md: 'flex', lg: 'flex' }}
-					direction="row" 
+					direction="row"
 					spacing={6}>
-					
+
 					<NextLink href="/about" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >About Us</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >About Us</Link>
 					</NextLink>
 
 					<NextLink href="/servicearea" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Service Area</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Service Area</Link>
 					</NextLink>
 
 					<NextLink href="/serviceoffered" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Services Offered</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Services Offered</Link>
 					</NextLink>
 
 					<NextLink href="/contact" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Contact Us</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Contact Us</Link>
 					</NextLink>
 
 					<NextLink href="/employment" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Employment</Link>
+						<Link fontSize={{ base: '30px', sm: '5px', md: '15px', lg: '23px' }} >Employment</Link>
 					</NextLink>
 
 				</Stack>
@@ -97,53 +97,55 @@ export default function Navbar() {
 			</Flex>
 
 			<Collapse in={isOpen} animateOpacity transitionDuration="200ms">
-				<Flex onClick={onToggle} align="center" direction="column" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} w="100vw" >
+				<Flex onClick={onToggle} align="center" direction="column" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} >
 
-					<Stack scrollBehavior={"inside"} p={20} h="60vh" w="100%" justify={"flex-start"}  display={{ base: "none", sm: "flex", md: "none", lg: "none" }} direction="column">
+					<Stack justify={"flex-start"} direction={"column"} align={"center"} w="100%" spacing={20}>
+						<Stack spacing={2} p={20} h="50vh" justify={"flex-start"} w="100%" display={{ base: "none", sm: "flex", md: "none", lg: "none" }} direction="column">
+							<MotionBox whileDrag={{ x: 10 }} whileHover={{ x: 10 }}>
+								<NextLink href="/about" passHref>
+									<Link fontSize={"lg"} fontWeight="semibold">About Us</Link>
+								</NextLink>
+							</MotionBox>
 
 
-						<MotionBox whileDrag={{x:10}} whileHover={{x:10}}>
-							<NextLink href="/about" passHref>
-								<Link fontSize={"lg"} fontWeight="semibold">About Us</Link>
-							</NextLink>
-						</MotionBox>
+							<Divider />
+
+							<MotionBox whileHover={{ x: 10 }}>
+								<NextLink href="/serviceoffered" passHref>
+									<Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
+								</NextLink>
+							</MotionBox>
+
+							<Divider />
+
+							<MotionBox whileHover={{ x: 10 }}>
+								<NextLink href="/contact" passHref>
+									<Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
+								</NextLink>
+							</MotionBox>
+
+							<Divider />
+
+							<MotionBox whileHover={{ x: 10 }}>
+								<NextLink href="/employment" passHref>
+									<Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
+								</NextLink>
+							</MotionBox>
 
 
-						<Divider />
 
-						<MotionBox whileHover={{ x: 10 }}>
-							<NextLink href="/serviceoffered" passHref>
-								<Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
-							</NextLink>
-						</MotionBox>
-
-						<Divider />
-
-						<MotionBox whileHover={{ x: 10 }}>
-							<NextLink href="/contact" passHref>
-								<Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
-							</NextLink>
-						</MotionBox>
-
-						<Divider />
-
-						<MotionBox whileHover={{ x: 10 }}>
-							<NextLink href="/employment" passHref>
-								<Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
-							</NextLink>
-						</MotionBox>
-
+						</Stack>
+						<Box minH="20px" justify={"center"}>
+							<ArrowIcon
+								as={ChevronDownIcon}
+								w={20}
+								h={20}
+								whileHover={{ scale: 1.2 }}
+							/>
+						</Box>
 
 
 					</Stack>
-					<Flex justify={"center"}>
-						<ArrowIcon
-							as={ChevronDownIcon}
-							w={20}
-							h={20}
-							whileHover= {{scale:1.2}}
-						/>
-					</Flex>
 
 				</Flex>
 			</Collapse>
@@ -151,7 +153,7 @@ export default function Navbar() {
 	)
 }
 
-const DropdownLink = ({href, text}) => {
+const DropdownLink = ({ href, text }) => {
 	return (
 		<NextLink href={href} passHref>
 			<Link fontSize={"lg"} fontWeight="semibold">{text}</Link>
@@ -161,23 +163,23 @@ const DropdownLink = ({href, text}) => {
 
 const MobileNav = () => {
 	const { isOpen, onToggle } = useDisclosure()
-  return (
-    <Stack p={10} h="100vh" align={"center"} display={!isOpen ? {base:"none", sm:"flex", md:"none", lg:"none"} : "none"}>
-		  <NextLink href="/about" passHref>
-			  <Link fontSize={"lg"} fontWeight="semibold" onClick={ () => onToggle()} >About Us</Link>
-		  </NextLink>
+	return (
+		<Stack p={10} h="100vh" align={"center"} display={!isOpen ? { base: "none", sm: "flex", md: "none", lg: "none" } : "none"}>
+			<NextLink href="/about" passHref>
+				<Link fontSize={"lg"} fontWeight="semibold" onClick={() => onToggle()} >About Us</Link>
+			</NextLink>
 
-		  <NextLink href="/serviceoffered" passHref>
-			  <Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
-		  </NextLink>
+			<NextLink href="/serviceoffered" passHref>
+				<Link fontSize={"lg"} fontWeight="semibold"  >Services Offered</Link>
+			</NextLink>
 
-		  <NextLink href="/contact" passHref>
-			  <Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
-		  </NextLink>
+			<NextLink href="/contact" passHref>
+				<Link fontSize={"lg"} fontWeight="semibold"  >Contact Us</Link>
+			</NextLink>
 
-		  <NextLink href="/employment" passHref>
-			  <Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
-		  </NextLink>
-    </Stack>
-  );
+			<NextLink href="/employment" passHref>
+				<Link fontSize={"lg"} fontWeight="semibold"  >Employment</Link>
+			</NextLink>
+		</Stack>
+	);
 };

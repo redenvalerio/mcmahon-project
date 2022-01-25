@@ -13,7 +13,7 @@ export default function Navbar() {
 
 			<Flex as="navbar" pb="5" align="center" width="full">
 
-				<Box ml="50px" width={["200px", "300px", "300px", "300px"]}>
+				<Box ml="50px" width={["200px", "200px", "300px", "300px"]}>
 					<Logo />
 				</Box>
 				

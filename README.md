@@ -1,4 +1,4 @@
-# mcmahon-project
+# McMahon Project
 Freelance Work for McMahon Website
 
 ### Project Type

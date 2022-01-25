@@ -40,7 +40,8 @@ export default function NavbarImproved() {
 				borderColor={useColorModeValue('gray.200', 'gray.900')}
 				align={'center'}>
 				<Flex flex={{ base: 1 }} justify='start'>
-					<Img p={5} maxH={"150px"} src={useColorModeValue('mcmahon-logo.png', 'mcmahon-logo-dark.png')} />
+					<Img p={1} maxH={"150px"} minW={"150px"}
+						src={useColorModeValue('mcmahon-logo.png', 'mcmahon-logo-dark.png')} />
 				</Flex>
 
 				<Stack
@@ -52,23 +53,23 @@ export default function NavbarImproved() {
 					spacing={6}>
 
 					<NextLink href="/about" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'17px', lg:'23px'}} >About Us</Link>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >About Us</Link>
 					</NextLink>
 
 					<NextLink href="/servicearea" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'17px', lg:'23px'}} >Service Area</Link>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Service Area</Link>
 					</NextLink>
 
 					<NextLink href="/serviceoffered" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'17px', lg:'23px'}} >Services Offered</Link>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Services Offered</Link>
 					</NextLink>
 
 					<NextLink href="/contact" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'17px', lg:'23px'}} >Contact Us</Link>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Contact Us</Link>
 					</NextLink>
 
 					<NextLink href="/employment" passHref>
-						<Link fontSize={{base:'30px', sm: '5px', md:'17px', lg:'23px'}} >Employment</Link>
+						<Link fontSize={{base:'30px', sm: '5px', md:'15px', lg:'23px'}} >Employment</Link>
 					</NextLink>
 
 				</Stack>

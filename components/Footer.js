@@ -15,12 +15,15 @@ const Footer = () => {
             <Center>
                 <Stack spacing="10" divider={<StackDivider />}>
                 <Stack direction={{ base: 'column', lg: 'row' }} spacing={{ base: '10', lg: '28' }}>
-                    <Box ml="5%" width={["100px", "100px", "200px", "200px"]}>
-                        <Logo />
-                    </Box>
+                    <Center>
+                        <Box ml="5%" width={["100px", "100px", "200px", "200px"]}>
+                            <Logo />
+                        </Box>
+                    </Center>
+
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={{ base: '10', md: '20' }}>
-                    <LinkGrid spacing={{ base: '10', md: '20', lg: '28' }} flex="1" />
-                    <SubscribeForm width={{ base: 'full', md: 'sm' }} />
+                        <LinkGrid spacing={{ base: '10', md: '20', lg: '28' }} flex="1" />
+                        <SubscribeForm width={{ base: 'full', md: 'sm' }} />
                     </Stack>
                 </Stack>
                 <Stack

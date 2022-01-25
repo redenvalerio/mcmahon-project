@@ -20,7 +20,7 @@ export const SubscribeForm = (props) => {
             placeholder="Enter your email"
             type="email"
             required
-            focusBorderColor={useColorModeValue('blue.500', 'blue.300')}
+            focusBorderColor={useColorModeValue('gray.300', 'gray.100')}
             _placeholder={{
               opacity: 1,
               color: useColorModeValue('gray.500', 'whiteAlpha.700'),
@@ -28,7 +28,9 @@ export const SubscribeForm = (props) => {
           />
           <Button
             type="submit"
-            colorScheme="blue"
+            colorScheme="gray"
+            bg={useColorModeValue('gray.500','gray.700')}
+            _hover={useColorModeValue({bg:'gray.400'},{bg:'gray.600'})}
             flexShrink={0}
             width={{
               base: 'full',

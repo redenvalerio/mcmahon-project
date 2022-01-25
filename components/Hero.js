@@ -22,12 +22,14 @@ import {
   export default function CallToActionWithVideo() {
     return (
       <Container maxW={'7xl'}>
+        
         <Stack
           align={'center'}
           spacing={{ base: 8, md: 10 }}
           py={{ base: 20, md: 28 }}
           direction={{ base: 'column', md: 'row' }}>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
             <Heading
               lineHeight={1.1}
               fontWeight={600}
@@ -78,7 +80,6 @@ import {
                 >
 
                 How It Works
-
               </Button>
             </Stack>
           </Stack>
@@ -90,26 +91,17 @@ import {
                 position={'relative'}
                 w={'full'}
             >
-                
-                <Box
-                    position={'relative'}
-                    height={'300px'}
-                    rounded={'2xl'}
-                    boxShadow={'2xl'}
-                    width={'full'}
-                    overflow={'hidden'}>
-                    <ScaleFade in>
-                        <Img
-                            alt={'Hero Image'}
-                            fit={'cover'}
-                            align={'center'}
-                            w={'100%'}
-                            h={'100%'}
-                            src={'mcmahon-truck.jpg'}
-                        />
-                    </ScaleFade >
-                </Box>
-
+                <Fade in>
+                    <model-viewer 
+                            style={
+                                {width:"500px",height:"500px"}
+                            }
+                            src="truck.glb" 
+                            loading="eager"
+                            camera-controls
+                            auto-rotate
+                            ></model-viewer>
+                </Fade>
             </Flex>
         </Stack>
       </Container>
